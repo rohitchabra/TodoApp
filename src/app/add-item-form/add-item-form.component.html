@@ -1,0 +1,57 @@
+<div class="row silverbg">
+  <form #f=ngForm >
+    <div class="col-lg-8">
+      <div class="col-lg-2  ">
+        <label class="form-col-label">Add Item:</label>
+      </div>
+      <div class="col-lg-10">
+        <div class="form-group">
+            <input name="item" [(ngModel)]="data.item" type="text" class="form-control" required >
+        </div>
+        <div hidden class="form-group">
+            <input type="number" name="id" type="text" [(ngModel)]="data.id" class="form-control" required >
+        </div> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-1">
+          <button class="btn btn-primary" [disabled]="f.form.invalid" (click)="addItem(f.form.value)">Add Item</button>
+      </div> 
+    </div>
+  </form>
+</div>
+
+<div class="container marginTop20"> 
+  <div class="row">
+    <div class="form-group col-lg-4">
+        <!-- <button class="btn btn-primary" (click)="selectAll(ch)">Select All</button> -->
+        <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();"/>
+    </div> 
+    <div class="form-group col-lg-4">
+        <button class="btn btn-danger" (click)="deleteSelectedItem()">Delete Selected</button>
+    </div> 
+    <div class="form-group col-lg-4">
+        <button class="btn btn-danger" (click)="deleteAll()">Delete All</button>
+    </div> 
+  </div>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-lg-2">#</th>
+          <th class="col-lg-8">Items</th>
+          <th class="col-lg-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>
+              <label><input type="checkbox" [(ngModel)]="item.selected" (change)="checkIfAllSelected();" (click)="selectedItem(item)"></label>
+          </td>
+          <td>{{item.item}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>

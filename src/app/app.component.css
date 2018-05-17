@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.top {
+    height: 30vh;
+    background: linear-gradient(to right, rgb(221, 22, 22), rgb(18, 54, 212));
+    background-size: cover;
+    position: relative;
+}
+
+.bDiv {
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
